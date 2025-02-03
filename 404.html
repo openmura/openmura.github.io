@@ -3,17 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ページが見つかりません</title>
+    <title>404</title>
     <style>
-        body { text-align: center; font-family: Arial, sans-serif; }
-        h1 { font-size: 50px; color: red; }
-        p { font-size: 20px; }
-        a { text-decoration: none; color: blue; }
+        .container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .content {
+            width: fit-content;
+            margin: auto;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                justify-content: flex-start;
+            }
+        }
     </style>
 </head>
 <body>
-    <h1>404 Not Found</h1>
-    <p>お探しのページは見つかりませんでした。</p>
-    <p><a href="/">トップページへ戻る</a></p>
+
+<div class="container">
+    <div class="content">
+        <img src="404.png" alt="404">
+    </div>
+</div>
+
 </body>
 </html>

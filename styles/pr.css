@@ -22,6 +22,10 @@ body {
     flex-direction: column-reverse;
     height: 100vh;
 }
+main div {
+    display: block;
+    width: 100%;
+}
 a {
     color: var(--text-color) !important;
     text-decoration: none;

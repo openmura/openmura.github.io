@@ -105,20 +105,22 @@ a:hover {
     overflow-y: scroll;
 }
 
-/* 修正: main の div を縦並びにする */
+/* mainの修正: divが縦に並ぶようにする */
 main {
     display: block;
     width: 100%;
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
 }
 
-main div {
+/* 各ページの設定 */
+.page {
     display: block;
     width: 100%;
-}
-
-.page {
+    height: 100vh;
     position: relative;
-    flex: 0 0 100vh;
+    scroll-snap-align: start;
     background-size: cover;
     background-position: center;
     display: flex;

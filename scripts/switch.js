@@ -12,13 +12,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 window.onload = function() {
     const urlParams = new URLSearchParams(window.location.search);
-    const isGuestMode = urlParams.has("guestmode");
+    const isGuestMode = urlParams.has("?guestmode");
 
     if (isGuestMode) {
-        document.getElementById("userName").innerHTML = "ゲスト";
-        const now = new Date();
-        document.getElementById("lastVisited").innerHTML = formatDate(now.toISOString());
-        document.getElementById("agreeDate").innerHTML = "ゲストモード使用中";
     } else {
         if (localStorage.getItem("agree")) {
             document.getElementById("userName").innerHTML = `${localStorage.getItem("userName")}`;

@@ -8,19 +8,28 @@ document.addEventListener("DOMContentLoaded", () => {
         const defaultTheme = prefersDarkScheme ? "dark" : "light";
         document.documentElement.setAttribute("data-theme", defaultTheme);
     }
-
 });
 
 window.onload = function() {
-    if (localStorage.getItem("agree")) {
-        document.getElementById("userName").innerHTML = `${localStorage.getItem("userName")}`;
+    const urlParams = new URLSearchParams(window.location.search);
+    const isGuestMode = urlParams.has("guestmode");
+
+    if (isGuestMode) {
+        document.getElementById("userName").innerHTML = "ゲスト";
         const now = new Date();
-        localStorage.setItem("lastVisited", formatDate(now.toISOString()));
-        document.getElementById("lastVisited").innerHTML = localStorage.getItem("lastVisited") ;
-        document.getElementById("agreeDate").innerHTML = localStorage.getItem("agreeDate") ;
+        document.getElementById("lastVisited").innerHTML = formatDate(now.toISOString());
+        document.getElementById("agreeDate").innerHTML = "ゲストモード使用中";
     } else {
-        alert("⚠️警告⚠️\n\nルールを確認していません。");
-        location.href="rule.html"
+        if (localStorage.getItem("agree")) {
+            document.getElementById("userName").innerHTML = `${localStorage.getItem("userName")}`;
+            const now = new Date();
+            localStorage.setItem("lastVisited", formatDate(now.toISOString()));
+            document.getElementById("lastVisited").innerHTML = localStorage.getItem("lastVisited");
+            document.getElementById("agreeDate").innerHTML = localStorage.getItem("agreeDate");
+        } else {
+            alert("⚠️警告⚠️\n\nルールを確認していません。");
+            location.href = "rule.html";
+        }
     }
 };
 
@@ -29,6 +38,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (devValue !== "1") {
         document.querySelectorAll(".dev").forEach(el => {
             el.classList.add("hiddenDev");
-        })
+        });
     }
-})
+});
